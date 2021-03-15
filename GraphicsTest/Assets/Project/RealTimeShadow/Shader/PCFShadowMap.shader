@@ -13,10 +13,13 @@
 
             struct v2f {
                 float4 vertex : POSITION;
+                float2 uv : TEXCOORD0;
                 float2 depth: TEXCOORD1;
             };
 
+            float4x4 SHADOW_MAP_VP;
             float3 worldLightVector;
+            sampler2D _CameraDepthTexture;
 
             v2f vert(appdata_base v) {
                 v2f o;

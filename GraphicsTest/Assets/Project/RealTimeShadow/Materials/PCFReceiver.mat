@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: PCFReceiver
   m_Shader: {fileID: 4800000, guid: 0a0424d3ddf96fb468f73621cba4df4e, type: 3}
-  m_ShaderKeywords: 
+  m_ShaderKeywords: _USESTRATIFIED_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -24,7 +24,10 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _FilterSize: 5
-    - _baseBias: 0.000125
-    - _maxBias: 0.00012
+    - _FilterSize: 1
+    - _UseLINEAR: 0
+    - _UsePoissionDisk: 0
+    - _UseStratified: 1
+    - _baseBias: 0.000023
+    - _maxBias: 0.000023
     m_Colors: []
