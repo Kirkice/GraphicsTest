@@ -27,6 +27,7 @@ public class RayTracingShadow : MonoBehaviour
             Graphics.Blit(src,rt,_material);
             _material.SetVector("_LightDir",mainLight.transform.forward);
             Graphics.Blit(rt,dest);
+            RenderTexture.ReleaseTemporary(rt);
         }
     }
 }
