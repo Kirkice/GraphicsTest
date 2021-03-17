@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Project/Noise/Noise.unity
+- path: Assets/Project/RealTimeShadow/Scene/7.0 TextureShadow.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
