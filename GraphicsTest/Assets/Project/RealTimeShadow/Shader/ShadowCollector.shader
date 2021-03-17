@@ -36,7 +36,7 @@
 			Output vert (Input i)
 			{
 				Output o;
-				o.pos = UnityObjectToClipPos (i.vertex);
+				o.pos = UnityObjectToClipPos(i.vertex);
 				o.uv = i.texcoord;
 				
 				return o;
@@ -78,7 +78,7 @@
 
 				half shadow = (sampleDepth < depth - 0.05) ? 0.1 : 1;
 
-				return shadow;
+				return float4(shadow.xxx,col.a);
 			}
 			ENDCG
 		}
