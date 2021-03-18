@@ -48,7 +48,7 @@
 							depth = 1 - depth;       //(1, 0)-->(0, 1)
 				#endif
 				//return EncodeFloatRGBA(depth);
-				return float4(depth.xxx,tex.a);
+				return float4(depth.x,tex.r,tex.g,tex.b);
 			}
 			ENDCG 
 		}	

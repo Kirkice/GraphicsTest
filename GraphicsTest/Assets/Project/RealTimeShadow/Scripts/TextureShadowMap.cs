@@ -7,7 +7,7 @@ public class TextureShadowMap : MonoBehaviour
 {
     public Material shadowCasterMat = null;
     public Material shadowCollectorMat = null;
-
+    public LayerMask ReceiverMask;
     public GameObject _light;
 	public static Camera _lightCamera;
     RenderTexture lightDepthTexture = null;
@@ -102,6 +102,7 @@ public class TextureShadowMap : MonoBehaviour
             _depthCamera.transform.parent = Camera.main.transform;
             _depthCamera.transform.localPosition = Vector3.zero;
             _depthCamera.transform.localRotation = Quaternion.identity;
+            _depthCamera.cullingMask = ReceiverMask.value;
         }
 
 
@@ -125,6 +126,7 @@ public class TextureShadowMap : MonoBehaviour
             _lightCamera.transform.parent = _light.transform;
             _lightCamera.transform.localPosition = Vector3.zero;
             _lightCamera.transform.localRotation = Quaternion.identity;
+            _lightCamera.cullingMask = ReceiverMask.value;
         }
 
         _lightCamera.orthographicSize = orthographicSize;
@@ -140,10 +142,10 @@ public class TextureShadowMap : MonoBehaviour
             screenSpaceShadowTexture = new RenderTexture(Screen.width * qulity, Screen.height * qulity, 0, RenderTextureFormat.Default);
             screenSpaceShadowTexture.hideFlags = HideFlags.DontSave;
         }
-
+        Shader.SetGlobalVector("worldLightVector",_light.transform.forward);
         Matrix4x4 projectionMatrix = GL.GetGPUProjectionMatrix(Camera.main.projectionMatrix, false);
         Shader.SetGlobalMatrix("_inverseVP", Matrix4x4.Inverse(projectionMatrix * Camera.main.worldToCameraMatrix));
-
+        
         shadowCollectorMat.SetTexture("_CameraDepthTex", depthTexture);
         shadowCollectorMat.SetTexture("_LightDepthTex", lightDepthTexture);
         Graphics.Blit(depthTexture, screenSpaceShadowTexture, shadowCollectorMat);

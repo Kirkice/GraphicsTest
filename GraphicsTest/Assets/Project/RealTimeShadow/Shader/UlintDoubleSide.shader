@@ -6,9 +6,17 @@
     }
     SubShader
     {
+        Tags{"Queue" = "Transparent" "IgnoreProjector" = "True" "RenderType" = "Transparent"}
+        Pass
+        {
+			ZWrite On
+			ColorMask 0
+		}
         cull off
         Pass
         {
+            ZWrite Off
+            Blend SrcAlpha OneMinusSrcAlpha
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
@@ -40,8 +48,7 @@
             fixed4 frag (v2f i) : SV_Target
             {
                 fixed4 col = tex2D(_MainTex, i.uv);
-                clip(col.a - 0.5);
-                return col;
+                return float4(col.rgb,1);
             }
             ENDCG
         }

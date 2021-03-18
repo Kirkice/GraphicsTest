@@ -78,7 +78,7 @@
 
 				half shadow = (sampleDepth < depth - 0.05) ? 0.1 : 1;
 
-				return float4(shadow.xxx,col.a);
+				return float4(shadow,col.g,col.b,col.a);
 			}
 			ENDCG
 		}
