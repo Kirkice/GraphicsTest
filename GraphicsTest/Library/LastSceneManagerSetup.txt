@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Project/RealTimeShadow/Scene/5.0 CSM.unity
+- path: Assets/Project/ReflectiveShadowMaps/Scene/ReflectiveShadowMaps.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
